@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        document.documentElement.style.fontSize = document.documentElement.clientWidth/375*50+"px";
+    </script>
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.js"></script>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="test">
+    <div class="box" ng-controller="myctr">
+        <header class="header">
+            <a href="#" ng-click="change()"><<span>下厨房</span></a>
+            <a href="#"></a>
+            <a href="#">
+                <span>用APP打开</span>
+                <span>立即下载</span>
+            </a>
+        </header>
+        <section class="section">
+            <p>
+                <span>家常菜</span>
+                <span></span>
+                <span>最受欢迎</span>
+                <span>最近流行</span>
+            </p>
+            <div class="main">
+                <ui-view></ui-view>
+            </div>
+            
+        </section>
+    </div>
+    <script>
+        var app = angular.module('test',['ui.router']);
+        app.config(function($stateProvider,$urlRouterProvider){
+            $urlRouterProvider.otherwise('index');
+            $stateProvider.state('index',{
+                url:'/index',
+                template:"<dl ng-repeat='item in arr' ui-sref='coke({name:item.id})'><dt><img ng-src={{item.src}} alt=''></dt><dd><p>{{item.title}}</p><p><span>{{item.score}}</span><span>{{itme.txt}}</span></p></dd></dl>"
+            }).state('coke',{
+                url:'/coke',
+                templateUrl:'./view/coke.html',
+                params:{
+                    name:null
+                },
+                controller:function($stateParams,$scope){
+                    $scope.d = $scope.arr[$stateParams.name];
+                    console.log($stateParams);
+                }
+            })
+        })
+        app.controller('myctr',function($scope,provider){
+            provider().then(function(data){
+                console.log(data.data);
+                $scope.arr = data.data;
+            })
+            $scope.change = function(){
+                $('.bigbox').hide();
+            }
+        })
+        app.provider('provider',function(){
+            this.$get = function($http,$q){
+                return function(){
+                    var defer = $q.defer();
+                    $http({
+                        method:'get',
+                        url:'http://localhost:8080/getdata'
+                    }).then(function(res){
+                        defer.resolve(res);
+                    },function(err){
+                        defer.reject(err);
+                    })
+                    return defer.promise;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

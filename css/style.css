@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box; }
+
+body, html, .box {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+body {
+  font-size: 0.32rem; }
+
+.box {
+  display: flex;
+  flex-direction: column; }
+
+.header a, .section > p span, .bigbox .wrap p span:nth-child(2), .bigbox .wrap p span:nth-child(3) {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+a {
+  text-decoration: none;
+  color: #000; }
+
+.header {
+  height: 1rem;
+  border-bottom: 0.01rem solid #eee;
+  display: flex; }
+  .header a {
+    flex: 1; }
+    .header a:nth-child(1) {
+      flex: 1.5; }
+      .header a:nth-child(1) span {
+        font-size: 0.46rem;
+        margin-left: 0.1rem;
+        color: #FA6650;
+        font-weight: bolder; }
+    .header a:nth-child(3) {
+      flex: 3; }
+      .header a:nth-child(3) span {
+        border: 0.01rem solid #FA6650;
+        padding: 0.1rem 0.2rem;
+        display: block;
+        margin-left: 0.1rem; }
+        .header a:nth-child(3) span:nth-child(1) {
+          color: #FA6650; }
+        .header a:nth-child(3) span:nth-child(2) {
+          background: #FA6650;
+          color: #fff; }
+
+.section {
+  flex: 1;
+  overflow-x: hidden; }
+  .section > p {
+    height: 1rem;
+    display: flex;
+    padding: 0.2rem; }
+    .section > p span {
+      flex: 1; }
+      .section > p span:nth-child(1) {
+        font-size: 0.46rem;
+        font-weight: bolder; }
+      .section > p span:nth-child(3) {
+        color: #FA6650; }
+      .section > p span:nth-child(4) {
+        color: #999; }
+  .section .main {
+    width: 100%;
+    height: auto;
+    padding: 0.2rem; }
+    .section .main dl {
+      display: flex;
+      padding: 0.2rem 0; }
+      .section .main dl dt {
+        flex: 1; }
+      .section .main dl dd {
+        flex: 2;
+        margin-left: 0.2rem; }
+        .section .main dl dd p {
+          line-height: 0.6rem; }
+          .section .main dl dd p:nth-child(1) {
+            font-size: 0.4rem; }
+          .section .main dl dd p:nth-child(2) span {
+            font-size: 0.3rem; }
+
+.bigbox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  background: #fff; }
+  .bigbox img {
+    margin: 0.1rem 0.2rem;
+    width: 94%;
+    height: auto; }
+  .bigbox .nav {
+    width: 94%;
+    margin-left: 3%;
+    border-bottom: 0.01rem solid #eee;
+    text-align: center;
+    padding: 0.3rem 0; }
+    .bigbox .nav > p:nth-child(1) {
+      font-size: 0.5rem;
+      font-weight: bolder; }
+    .bigbox .nav > p:nth-child(2) {
+      font-weight: bolder;
+      line-height: 0.6rem; }
+      .bigbox .nav > p:nth-child(2) span {
+        font-size: 0.3rem; }
+  .bigbox .wrap {
+    width: 94%;
+    margin-left: 3%; }
+    .bigbox .wrap p {
+      border-bottom: 0.01rem solid #eee;
+      display: flex;
+      line-height: 0.5rem;
+      font-size: 0.3rem; }
+      .bigbox .wrap p:nth-child(1) {
+        border-bottom: none;
+        padding: 0.5rem 0;
+        font-size: 0.36rem; }
+      .bigbox .wrap p span {
+        flex: 1;
+        padding: 0.1rem 0; }
+        .bigbox .wrap p span:nth-child(1) {
+          flex: 1.5; }
+
+/*# sourceMappingURL=style.css.map */
